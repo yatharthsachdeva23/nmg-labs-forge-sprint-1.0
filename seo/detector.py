@@ -130,7 +130,33 @@ def detect(rows: list[dict]) -> list[dict]:
         [r["Address"] for r in html if r.get("Indexability", "").strip().lower() == "non-indexable" and _int(r.get("Inlinks")) > 0],
         "Non-indexable pages receiving internal link equity.")
 
+# --- Duplicate Meta Descriptions ---
+    by_meta = defaultdict(list)
+    for r in idx200:
+        m = (r.get("Meta Description 1", "") or "").strip()
+        if m:
+            by_meta[m].append(r["Address"])
+    dup_m = [u for urls in by_meta.values() if len(urls) > 1 for u in urls]
+    add("duplicate_meta_description", "Medium", dup_m, "Pages sharing duplicate meta descriptions.")
 
+    # --- Duplicate H1 Headers ---
+    by_h1 = defaultdict(list)
+    for r in idx200:
+        h = (r.get("H1-1", "") or "").strip()
+        if h:
+            by_h1[h].append(r["Address"])
+    dup_h1 = [u for urls in by_h1.values() if len(urls) > 1 for u in urls]
+    add("duplicate_h1", "Low", dup_h1, "Pages sharing duplicate H1 headings.")
+
+    # --- Redirect Chains & Loops ---
+    redirect_map_crawl = {r["Address"]: r["Redirect URL"] for r in rows if 300 <= _int(r.get("Status Code")) <= 399 and r.get("Redirect URL")}
+    chain_urls = []
+    for start_url in redirect_map_crawl.keys():
+        target = redirect_map_crawl[start_url]
+        if target in redirect_map_crawl:
+            chain_urls.append(start_url)
+    add("redirect_chain", "High", chain_urls, "Redirect configurations resulting in multi-hop chains or cycles.")
+    
     return issues
 
 
