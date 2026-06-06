@@ -66,12 +66,16 @@ def seo_detect() -> dict:
     t_fixes, r_fixes = run_cloud_fixer()
     RUN["fixes"] = {"titles": t_fixes, "redirect_map": r_fixes}
     
+    # Use the smart, dynamic recommendations straight from your engine summary!
+    recommendations = RUN["summary"].get("recommendations", [])
+    RUN["recommendations"] = recommendations
+    
     for i in issues:
         _emit("issue", i)
     _emit("summary", RUN["summary"])
-    _emit("fixes", RUN["fixes"])  # Stream fix objects natively to cockpit UI channels
+    _emit("fixes", RUN["fixes"])
+    _emit("recommendations", {"recommendations": recommendations})
     return {"detected": len(issues), "summary": RUN["summary"]}
-
 
 def _report_obj() -> dict:
     return {
