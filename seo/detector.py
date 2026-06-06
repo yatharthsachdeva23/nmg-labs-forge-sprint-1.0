@@ -97,6 +97,40 @@ def detect(rows: list[dict]) -> list[dict]:
     # Each is a short rule over the columns — see rulebook.md.
     # ----------------------------------------------------------------------- #
 
+    # --- Title Too Short ---
+    add("title_too_short", "Low",
+        [r["Address"] for r in idx200 
+         if 0 < _int(r.get("Title 1 Length")) < 30],
+        "Titles shorter than 30 characters.")
+
+    # --- Meta Descriptions ---
+    add("missing_meta_description", "Medium",
+        [r["Address"] for r in idx200 if not (r.get("Meta Description 1", "") or "").strip()],
+        "Indexable pages with no meta description.")
+
+    add("meta_description_too_long", "Low",
+        [r["Address"] for r in idx200 if _int(r.get("Meta Description 1 Length")) > 155],
+        "Meta descriptions over 155 characters.")
+
+    # --- H1 Tags ---
+    add("missing_h1", "Medium",
+        [r["Address"] for r in html if is_200(r) and not (r.get("H1-1", "") or "").strip()],
+        "Pages with missing H1 headers.")
+
+    # --- Content & Performance ---
+    add("thin_content", "Low",
+        [r["Address"] for r in html if indexable(r) and _int(r.get("Word Count")) < 200],
+        "Indexable pages with thin textual content (< 200 words).")
+
+    add("slow_page", "Low",
+        [r["Address"] for r in html if _float(r.get("Response Time")) > 1.0],
+        "Pages taking longer than 1.0 second to respond.")
+
+    add("non_indexable_but_linked", "Medium",
+        [r["Address"] for r in html if r.get("Indexability", "").strip().lower() == "non-indexable" and _int(r.get("Inlinks")) > 0],
+        "Non-indexable pages receiving internal link equity.")
+
+
     return issues
 
 
