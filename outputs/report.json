@@ -1,0 +1,220 @@
+{
+  "site": "demo-shop.example",
+  "urls_crawled": 22,
+  "summary": {
+    "total_issues": 16,
+    "by_severity": {
+      "High": 5,
+      "Medium": 7,
+      "Low": 4
+    }
+  },
+  "issues": [
+    {
+      "type": "missing_title",
+      "severity": "High",
+      "affected_urls": [
+        "https://demo-shop.example/widgets/red"
+      ],
+      "count": 1,
+      "explanation": "Indexable pages with no title tag."
+    },
+    {
+      "type": "duplicate_title",
+      "severity": "High",
+      "affected_urls": [
+        "https://demo-shop.example/about",
+        "https://demo-shop.example/duplicate-about",
+        "https://demo-shop.example/widgets/blue",
+        "https://demo-shop.example/widgets/blue-copy"
+      ],
+      "count": 4,
+      "explanation": "Pages sharing an identical title."
+    },
+    {
+      "type": "title_too_long",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/blog/widget-guide",
+        "https://demo-shop.example/widgets/blue",
+        "https://demo-shop.example/widgets/blue-copy"
+      ],
+      "count": 3,
+      "explanation": "Titles likely truncated in search results."
+    },
+    {
+      "type": "broken_link",
+      "severity": "High",
+      "affected_urls": [
+        "https://demo-shop.example/gadgets/old-phone"
+      ],
+      "count": 1,
+      "explanation": "URLs returning a client error (4xx)."
+    },
+    {
+      "type": "server_error",
+      "severity": "High",
+      "affected_urls": [
+        "https://demo-shop.example/server-down"
+      ],
+      "count": 1,
+      "explanation": "URLs returning a server error (5xx)."
+    },
+    {
+      "type": "redirect",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/legacy-page",
+        "https://demo-shop.example/old-widgets",
+        "https://demo-shop.example/sale"
+      ],
+      "count": 3,
+      "explanation": "URLs that redirect (3xx)."
+    },
+    {
+      "type": "orphan_page",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/orphan-promo"
+      ],
+      "count": 1,
+      "explanation": "Indexable pages with zero internal links in."
+    },
+    {
+      "type": "title_too_short",
+      "severity": "Low",
+      "affected_urls": [
+        "https://demo-shop.example/about",
+        "https://demo-shop.example/blog",
+        "https://demo-shop.example/blog/gadget-tips",
+        "https://demo-shop.example/contact",
+        "https://demo-shop.example/duplicate-about",
+        "https://demo-shop.example/gadgets",
+        "https://demo-shop.example/orphan-promo",
+        "https://demo-shop.example/widgets",
+        "https://demo-shop.example/widgets/green"
+      ],
+      "count": 9,
+      "explanation": "Titles shorter than 30 characters."
+    },
+    {
+      "type": "missing_meta_description",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/blog/gadget-tips",
+        "https://demo-shop.example/gadgets",
+        "https://demo-shop.example/widgets"
+      ],
+      "count": 3,
+      "explanation": "Indexable pages with no meta description."
+    },
+    {
+      "type": "missing_h1",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/widgets/red"
+      ],
+      "count": 1,
+      "explanation": "Pages with missing H1 headers."
+    },
+    {
+      "type": "thin_content",
+      "severity": "Low",
+      "affected_urls": [
+        "https://demo-shop.example/blog/gadget-tips",
+        "https://demo-shop.example/contact",
+        "https://demo-shop.example/widgets/blue",
+        "https://demo-shop.example/widgets/blue-copy",
+        "https://demo-shop.example/widgets/red"
+      ],
+      "count": 5,
+      "explanation": "Indexable pages with thin textual content (< 200 words)."
+    },
+    {
+      "type": "slow_page",
+      "severity": "Low",
+      "affected_urls": [
+        "https://demo-shop.example/server-down",
+        "https://demo-shop.example/slow-page"
+      ],
+      "count": 2,
+      "explanation": "Pages taking longer than 1.0 second to respond."
+    },
+    {
+      "type": "non_indexable_but_linked",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/cart",
+        "https://demo-shop.example/checkout",
+        "https://demo-shop.example/gadgets/old-phone",
+        "https://demo-shop.example/legacy-page",
+        "https://demo-shop.example/old-widgets",
+        "https://demo-shop.example/sale",
+        "https://demo-shop.example/server-down"
+      ],
+      "count": 7,
+      "explanation": "Non-indexable pages receiving internal link equity."
+    },
+    {
+      "type": "duplicate_meta_description",
+      "severity": "Medium",
+      "affected_urls": [
+        "https://demo-shop.example/about",
+        "https://demo-shop.example/duplicate-about",
+        "https://demo-shop.example/widgets/blue",
+        "https://demo-shop.example/widgets/blue-copy"
+      ],
+      "count": 4,
+      "explanation": "Pages sharing duplicate meta descriptions."
+    },
+    {
+      "type": "duplicate_h1",
+      "severity": "Low",
+      "affected_urls": [
+        "https://demo-shop.example/about",
+        "https://demo-shop.example/duplicate-about",
+        "https://demo-shop.example/widgets/blue",
+        "https://demo-shop.example/widgets/blue-copy"
+      ],
+      "count": 4,
+      "explanation": "Pages sharing duplicate H1 headings."
+    },
+    {
+      "type": "redirect_chain",
+      "severity": "High",
+      "affected_urls": [
+        "https://demo-shop.example/legacy-page"
+      ],
+      "count": 1,
+      "explanation": "Redirect configurations resulting in multi-hop chains or cycles."
+    }
+  ],
+  "fixes": {
+    "titles": [
+      {
+        "url": "https://demo-shop.example/widgets/red",
+        "old": "",
+        "new": "Red | Demo Shop Premium Quality"
+      }
+    ],
+    "redirect_map": [
+      {
+        "from": "https://demo-shop.example/gadgets/old-phone",
+        "to": "https://demo-shop.example/",
+        "reason": "404 -> closest live section page"
+      }
+    ]
+  },
+  "recommendations": [
+    "Fix the 1 High-severity 'missing_title' issue(s) first.",
+    "Fix the 4 High-severity 'duplicate_title' issue(s) first.",
+    "Fix the 1 High-severity 'broken_link' issue(s) first.",
+    "Fix the 1 High-severity 'server_error' issue(s) first.",
+    "Fix the 1 High-severity 'redirect_chain' issue(s) first."
+  ],
+  "run_meta": {
+    "model": "qwen3.5:9b",
+    "model_calls": 0,
+    "duration_sec": 0.0
+  }
+}
