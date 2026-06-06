@@ -12,6 +12,7 @@ Format:
 ---
 
 ## Example (replace with your own)
+
 - `[10:20]` Chose plain-csv parsing over pandas → fewer deps, fast enough for 5k rows, model
   quota saved for the fixer.
 - `[11:05]` Title detector over-counted duplicates → realized non-indexable pages were
@@ -22,4 +23,6 @@ Format:
 ---
 
 ## My log
-- `[--:--]` ...
+
+- [12:05] Initializing the 6-hour sprint. Decided to build a strict deterministic split-engine inside seo/detector.py to handle rules without overflowing local model memory.
+- [12:12] Encountered initial path FileNotFoundError. Resolved by correcting the export directory path relative to execution root. Confirmed successful baseline completion. Moving to integrate single-row issue rules.
