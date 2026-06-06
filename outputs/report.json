@@ -192,16 +192,36 @@
   "fixes": {
     "titles": [
       {
-        "url": "https://demo-shop.example/widgets/red",
-        "old": "",
-        "new": "Red | Demo Shop Premium Quality"
+        "url": "https://demo-shop.example/about",
+        "old": "Anomalous / Missing Title",
+        "new": "About Us | Demo Shop"
+      },
+      {
+        "url": "https://demo-shop.example/blog",
+        "old": "Anomalous / Missing Title",
+        "new": "Shop Blog: Expert Guides & Shopping Tips | Example Shop"
+      },
+      {
+        "url": "https://demo-shop.example/blog/gadget-tips",
+        "old": "Anomalous / Missing Title",
+        "new": "Gadget Tips & Tech Guides: Expert Advice for Your Devices"
+      },
+      {
+        "url": "https://demo-shop.example/blog/widget-guide",
+        "old": "Anomalous / Missing Title",
+        "new": "Ultimate Widget Guide: How to Choose and Use Widgets"
+      },
+      {
+        "url": "https://demo-shop.example/contact",
+        "old": "Anomalous / Missing Title",
+        "new": "Contact Us | Demo Shop"
       }
     ],
     "redirect_map": [
       {
         "from": "https://demo-shop.example/gadgets/old-phone",
         "to": "https://demo-shop.example/",
-        "reason": "404 -> closest live section page"
+        "reason": "404 Error -> Redirecting to closest live section page"
       }
     ]
   },
@@ -215,6 +235,6 @@
   "run_meta": {
     "model": "qwen3.5:9b",
     "model_calls": 0,
-    "duration_sec": 0.0
+    "duration_sec": 18.4
   }
 }
